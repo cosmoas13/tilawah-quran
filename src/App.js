@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import quranApi from "./api/quranApi";
+import Header from "./components/elements/header";
+import MainHome from './components/pages/MainHome';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    surah: []
+  }
+
+  componentDidMount() {
+    this.handleGetData();
+  }
+
+  handleGetData = async () => {
+    const response = await quranApi.get('/surah');
+
+    this.setState({ surah: response?.data?.data || [] });
+  }
+
+  render() {
+    const { surah } = this.state;
+    return (
+      <React.Fragment>
+        <Header />
+        <MainHome items={surah} />
+      </React.Fragment>
+    )
+  }
 }
 
-export default App;
+
