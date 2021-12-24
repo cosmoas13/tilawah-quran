@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import quranApi from "./api/quranApi";
 import Header from "./components/elements/header";
 import MainHome from './components/pages/MainHome';
-
 export default class App extends Component {
   state = {
     surah: []
@@ -28,5 +27,3 @@ export default class App extends Component {
     )
   }
 }
-
-
