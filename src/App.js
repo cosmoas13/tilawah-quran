@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import quranApi from "./api/quranApi";
 import Header from "./components/elements/header";
 import MainHome from './components/pages/MainHome';
+import ReadPage from './components/pages/ReadPages';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 export default class App extends Component {
-  state = {
-    surah: []
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      surah: []
+    }
   }
 
   componentDidMount() {
@@ -20,10 +26,15 @@ export default class App extends Component {
   render() {
     const { surah } = this.state;
     return (
-      <React.Fragment>
+      <>
         <Header />
-        <MainHome items={surah} />
-      </React.Fragment>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<MainHome items={surah} />} />
+            <Route path="/readpages/:id" element={<ReadPage items={surah} />} />
+          </Routes>
+        </Router>
+      </>
     )
   }
 }

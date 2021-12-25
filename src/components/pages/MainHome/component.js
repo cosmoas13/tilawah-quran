@@ -14,7 +14,13 @@ export default class MainHome extends Component {
     this.setState({
       search: e.target.value
     });
-    console.log(e.target.value);
+  }
+
+  showMostPicked = () => {
+    window.scrollTo({
+      top: this.props.refMostPicked.current.offsetTop - 30,
+      behavior: "smooth"
+    })
   }
 
   render() {
@@ -28,9 +34,9 @@ export default class MainHome extends Component {
         data?.name?.translation?.id.toLowerCase().includes(search.toLowerCase())) {
         return data;
       }
-    }).map((data) => {
+    }).map((data, idx) => {
       return (
-        <Card surah={data} />
+        <Card surah={data} key={idx} />
       )
     })
 
