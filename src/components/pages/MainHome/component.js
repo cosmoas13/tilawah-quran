@@ -34,11 +34,12 @@ export default class MainHome extends Component {
         data?.name?.translation?.id.toLowerCase().includes(search.toLowerCase())) {
         return data;
       }
+      return null;
     }).map((data, idx) => {
       return (
         <Card surah={data} key={idx} />
       )
-    })
+    });
 
     return (
       <React.Fragment>
