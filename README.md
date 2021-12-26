@@ -2,6 +2,10 @@
 
 This project was using Tailwind (https://tailwindcss.com/).
 
+# Live Demo
+
+Deploy on Netlify : https://tilawah-quran.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
